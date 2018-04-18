@@ -51,7 +51,7 @@ public class UploadHelper {
     /**
      * 创建请求对象
      */
-    public static Param createParam(HttpServletRequest request) throws Exception {
+    public static Param createParam(HttpServletRequest request)  {
         List<FormParam> formParamList=new ArrayList<FormParam>();
         List<FileParam> fileParamList=new ArrayList<FileParam>();
         try {
