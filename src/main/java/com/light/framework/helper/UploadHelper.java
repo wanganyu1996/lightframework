@@ -54,6 +54,9 @@ public class UploadHelper {
     public static Param createParam(HttpServletRequest request)  {
         List<FormParam> formParamList=new ArrayList<FormParam>();
         List<FileParam> fileParamList=new ArrayList<FileParam>();
+        String tempPath=request.getServletContext().getRealPath("/file");
+        //String realPath=tempPath;
+        String realPath=tempPath.substring(0,tempPath.indexOf("target"))+"/file";
         try {
             Map<String,List<FileItem>> fileItemListMap=servletFileUpload.parseParameterMap(request);
             if(CollectionUtil.isNotEmpty(fileItemListMap)){
@@ -71,7 +74,7 @@ public class UploadHelper {
                                      long fileSize=fileItem.getSize();
                                      String contentType=fileItem.getContentType();
                                      InputStream inputStream=fileItem.getInputStream();
-                                     fileParamList.add(new FileParam(fieldName,fileName,fileSize,contentType,inputStream));
+                                     fileParamList.add(new FileParam(fieldName,fileName,fileSize,contentType,inputStream,realPath));
                                  }
                              }
                         }

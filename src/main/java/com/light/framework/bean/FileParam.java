@@ -11,6 +11,25 @@ public class FileParam {
     private long fileSize ;//上传文件的文件大小
     private String contentType;//上传文件的类型
     private InputStream inputStream;//上传文件的字节输入流
+    private String realPath;//上传文件到服务器的路径
+
+    public String getRealPath() {
+        return realPath;
+    }
+
+    public void setRealPath(String realPath) {
+        this.realPath = realPath;
+    }
+
+    public FileParam(String fieldName, String fileName, long fileSize, String contentType, InputStream inputStream, String realPath) {
+        this.fieldName = fieldName;
+        this.fileName = fileName;
+        this.fileSize = fileSize;
+
+        this.contentType = contentType;
+        this.inputStream = inputStream;
+        this.realPath = realPath;
+    }
 
     public String getFieldName() {
         return fieldName;
@@ -52,12 +71,5 @@ public class FileParam {
         this.inputStream = inputStream;
     }
 
-    public FileParam(String fieldName, String fileName, long fileSize, String contentType, InputStream inputStream) {
 
-        this.fieldName = fieldName;
-        this.fileName = fileName;
-        this.fileSize = fileSize;
-        this.contentType = contentType;
-        this.inputStream = inputStream;
-    }
 }
